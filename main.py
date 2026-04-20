@@ -3,20 +3,20 @@ from fastapi import FastAPI, HTTPException
 app = FastAPI()
 
 
-items = []
+events = []
 
 @app.get("/")
 def root():
-    return {"message": "Hello, World!"}
+    return {"message": "What’s actually worth my time this weekend nearby?"}
 
-@app.post("/items")
-def create_item(item: str):
-    items.append(item)
-    return items
+@app.post("/events")
+def create_event(event: str):
+    events.append(event)
+    return events
 
-@app.get("/items/{item_id}")
-def get_item(item_id: int) -> str:
-    if item_id < len(items):
-        return items[item_id]
+@app.get("/events/{event_id}")
+def get_event(event_id: int) -> str:
+    if event_id < len(events):
+        return events[event_id]
     else:
-        raise HTTPException(status_code=404, detail=f"Item {item_id} not found")
+        raise HTTPException(status_code=404, detail=f"Event {event_id} not found")
