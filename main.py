@@ -3,7 +3,7 @@ from fastapi import FastAPI, HTTPException
 app = FastAPI()
 
 
-events = []
+events = ["CTF", "Hackathon", "Conference", "Meetup"]
 
 @app.get("/")
 def root():
@@ -20,3 +20,4 @@ def get_event(event_id: int) -> str:
         return events[event_id]
     else:
         raise HTTPException(status_code=404, detail=f"Event {event_id} not found")
+    
