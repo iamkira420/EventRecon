@@ -28,9 +28,6 @@ def get_events(db: Session = Depends(get_db)):
             "description": event.description,
             "start_time": event.start_time,
             "status": get_time_status(event.start_time, event.end_time),
-            "location": event.location,
-            "link": event.link,
-            "tags": event.tags,
             "time_status": get_time_status(event.start_time)
         })
     return result
